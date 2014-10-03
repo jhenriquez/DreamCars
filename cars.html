@@ -2,7 +2,7 @@
 <html class="no-js" ng-app="DreamCars">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>DreamCars</title>
   </head>
   <body ng-controller="SelectionController">
     <select title="Choose a Dream Car"
@@ -14,7 +14,10 @@
 
     <ul title="My Dream Cars">
       <!-- user-selected data should go here -->
-      <li ng-repeat="car in selectedCars">{{car.make}} - {{car.model}}</li>
+      <li ng-repeat="car in selectedCars">
+        {{car.make}} - {{car.model}} -
+        <input type="submit" value="Remove it" ng-click="remove(car)" />
+      </li>
     </ul>
 
     <script src="cars.js"></script>

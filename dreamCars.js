@@ -28,6 +28,13 @@ angular.module('DreamCars', [])
 			$scope.selected = firstFromOrDefault($scope.selected.make);
 		};
 
+		$scope.remove = function remove (car) {
+			$scope.dreamCars.push(car);
+			$scope.dreamCars.sort(dreamCarsCompare);
+			$scope.selectedCars.splice($scope.selectedCars.carIndexOf(car),1);
+			$scope.selected = car;
+		};
+
 		$scope.dreamCars = dreamCars.sort(dreamCarsCompare);
 		$scope.selectedCars = [];
 		$scope.selected = $scope.dreamCars[0];
