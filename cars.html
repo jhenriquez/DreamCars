@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" ng-app="DreamCars">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
-    <select title="Choose a Dream Car">
+  <body ng-controller="SelectionController">
+    <select title="Choose a Dream Car"
+        ng-model="selected"
+        ng-options="dreamCar.model group by dreamCar.make for dreamCar in dreamCars">
       <!-- should be populated with dreamCars data -->
     </select>
-    <input type="submit" value="Add it" />
+    <input type="submit" value="Add it" ng-click="select()" />
 
     <ul title="My Dream Cars">
       <!-- user-selected data should go here -->
+      <li ng-repeat="car in selectedCars">{{car.make}} - {{car.model}}</li>
     </ul>
 
     <script src="cars.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.js"></script>
+    <script src="dreamCars.js"></script>
   </body>
 </html>
