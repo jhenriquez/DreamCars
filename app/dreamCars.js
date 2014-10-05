@@ -22,16 +22,20 @@ angular.module('DreamCars', [])
 			return $scope.dreamCars[0];
 		};
 
+		function removeCar (arr, car) {
+			arr.splice(arr.carIndexOf(car),1);
+		};
+
 		$scope.select = function select () {
 			$scope.selectedCars.push($scope.selected);
-			$scope.dreamCars.splice($scope.dreamCars.carIndexOf($scope.selected),1);
+			removeCar($scope.dreamCars, $scope.selected);
 			$scope.selected = firstFromOrDefault($scope.selected.make);
 		};
 
 		$scope.remove = function remove (car) {
 			$scope.dreamCars.push(car);
 			$scope.dreamCars.sort(dreamCarsCompare);
-			$scope.selectedCars.splice($scope.selectedCars.carIndexOf(car),1);
+			removeCar ($scope.selectedCars, car);
 			$scope.selected = car;
 		};
 
